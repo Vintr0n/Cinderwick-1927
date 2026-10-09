@@ -1,0 +1,56 @@
+import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+import {mkdtempSync,rmSync,mkdirSync,readFileSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {createApp} from '../server/index.js';
+const dir=mkdtempSync(join(tmpdir(),'cinderwick-browser-')),app=createApp({dataDir:dir,planningMs:600000});
+let browser;
+try{
+ await new Promise(resolve=>app.server.listen(0,'127.0.0.1',resolve));
+ browser=await chromium.launch({channel:'msedge',headless:true});
+ const page=await browser.newPage({viewport:{width:1440,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:'+app.server.address().port);
+ await page.locator('#setupDialog').waitFor();await page.fill('#bossName','Mara Ash');await page.fill('#outfitName','Ash Crew');await page.fill('#outfitColor','#b568cf');await page.click('#setupForm button');await page.waitForFunction(()=>!document.getElementById('setupDialog').open);await page.waitForFunction(()=>document.getElementById('crewCount').textContent==='3');
+ await page.locator('#scene canvas').waitFor();assert.equal(await page.locator('#renderError').isVisible(),false);
+ assert.equal(await page.locator('aside').count(),0);
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight&&document.documentElement.scrollWidth<=innerWidth));
+ const hq=JSON.parse(readFileSync(join(dir,'game.json'),'utf8')).state.buildings.find(b=>b.type==='hq'&&b.ownerId==='gang-player');
+ const hqPoint=await page.evaluate(async position=>{const THREE=await import('three'),r=document.getElementById('scene').getBoundingClientRect(),h=Math.max(40,42*r.height/r.width),c=new THREE.OrthographicCamera(-h*r.width/r.height,h*r.width/r.height,h,-h,.1,200);c.position.set(62,60,68);c.lookAt(15,0,15);c.updateMatrixWorld();const p=new THREE.Vector3(position.x*6-12,1.9,position.y*6-12).project(c);return {x:r.left+(p.x+1)*r.width/2,y:r.top+(1-p.y)*r.height/2};},hq.position);await page.mouse.click(hqPoint.x,hqPoint.y);await page.locator('#rosterDialog').waitFor();assert.equal(await page.locator('.hood-card').count(),3);
+ assert.equal(await page.locator('.crew-portrait').evaluateAll(images=>new Set(images.map(i=>i.src)).size),3);
+ mkdirSync('test-results',{recursive:true});await page.screenshot({path:'test-results/crew-first.png'});
+ assert.match(await page.locator('[data-hood="h-0"]').innerText(),/Mara Ash/);
+ assert.equal(await page.locator('.hood-card .stat').count(),12);
+ assert.ok(await page.locator('.stars').evaluateAll(nodes=>nodes.every(n=>!n.textContent.includes('\u2606')&&n.textContent.length===Number(n.getAttribute('aria-label').split(' ')[0]))));
+ assert.match(await page.locator('#payrollPreview').innerText(),/\$40/);
+ await page.click('[data-hood="h-1"]');assert.equal(await page.locator('#actions small').count(),0);assert.match(await page.locator('[data-action="recruit"]').getAttribute('title'),/50% chance/);assert.equal(await page.locator('[data-action="hit"]').isDisabled(),true);assert.equal(await page.locator('[data-action="bomb"]').isDisabled(),true);
+ await page.locator('#actionDialog [data-close]').click();await page.click('#buyBtn');assert.equal(await page.locator('#confirmBuy').isDisabled(),true);await page.click('[data-select-item="pistol"]');assert.equal(await page.locator('#cash').innerText(),'$1,000');await page.click('#confirmBuy');await page.waitForFunction(()=>document.getElementById('cash').textContent==='$900');
+ assert.equal(await page.locator('#confirmBuy').isDisabled(),true);await page.click('[data-select-item="bomb"]');assert.equal(await page.locator('#cash').innerText(),'$900');await page.click('#confirmBuy');await page.waitForFunction(()=>document.getElementById('cash').textContent==='$700');
+ assert.equal(await page.locator('#cash').innerText(),'$700');await page.screenshot({path:'test-results/equipment-shop.png'});await page.locator('#buyDialog [data-close]').click();await page.click('#rosterBtn');await page.selectOption('[data-quick-gun="h-1"]','pistol');await page.waitForFunction(()=>document.querySelector('[data-quick-gun="h-1"]').value==='pistol'&&document.querySelectorAll('.gear-icons img').length===1);await page.click('[data-quick-bomb="h-1"]');await page.waitForFunction(()=>document.querySelectorAll('.gear-icons img').length===2);await page.check('[data-quick-stance="h-1"]');await page.waitForTimeout(100);assert.equal(await page.locator('#rosterDialog').isVisible(),true);await page.click('[data-hood="h-1"]');assert.equal(await page.isChecked('#shootOnSight'),true);await page.click('#nextHood');assert.equal(await page.isChecked('#shootOnSight'),false);await page.click('#previousHood');assert.equal(await page.isChecked('#shootOnSight'),true);await page.click('#hoodEquipment');await page.locator('#buyDialog').waitFor();await page.locator('#buyDialog [data-close]').click();await page.click('#rosterBtn');await page.click('[data-hood="h-1"]');await page.screenshot({path:'test-results/crew-loadout.png'});
+ await page.check('#shootOnSight');await page.waitForTimeout(100);await page.click('#backToCrew');await page.locator('#rosterDialog').waitFor();await page.click('[data-hood="h-1"]');assert.equal(await page.isChecked('#shootOnSight'),true);await page.uncheck('#shootOnSight');await page.click('[data-action="recruit"]');await page.locator('#assignment').waitFor();
+ await page.mouse.click(hqPoint.x,hqPoint.y);await page.waitForFunction(()=>document.getElementById('orderCount').textContent==='1');
+ assert.equal(await page.locator('#assignment').isVisible(),false);await page.getByText('Assignment added to the ledger.',{exact:true}).waitFor();await page.screenshot({path:'test-results/order-pulse.png'});
+ await page.locator('#actionDialog').waitFor();assert.equal(await page.locator('#currentOrder').innerText(),'Recruit / '+hq.name);
+ await page.click('#backToCrew');await page.selectOption('#orderFilter','assigned');assert.equal(await page.locator('.hood-card').count(),1);await page.selectOption('#orderFilter','unassigned');assert.equal(await page.locator('.hood-card').count(),2);await page.selectOption('#orderFilter','all');
+ for(const stat of ['firearms','intelligence','intimidate','explosives']){await page.selectOption('#statSort',stat);const values=await page.locator('.hood-card').evaluateAll((cards,key)=>cards.map(card=>[...card.querySelectorAll('.stat')].find(s=>s.textContent.toLowerCase().startsWith(key)).querySelector('.stars').textContent.length),stat);assert.deepEqual(values,[...values].sort((a,b)=>b-a));}
+
+ await page.reload();await page.waitForFunction(()=>document.getElementById('orderCount').textContent==='1');
+ await page.click('#ledgerBtn');assert.equal(await page.locator('.queue-item').count(),1);await page.locator('#ledgerDialog [data-close]').click();
+ await page.click('#territory');await page.screenshot({path:'test-results/fullscreen-city.png'});
+ await page.click('#end');await page.locator('#playback').waitFor();await page.click('#skip');
+ await page.locator('#reportDialog').waitFor();assert.match(await page.locator('#reportBody').innerText(),/Recruitment unsuccessful/);
+ assert.match(await page.locator('#reportSummary').innerText(),/WEEKLY INCOME/);assert.doesNotMatch(await page.locator('#reportSummary').innerText(),/NET CASH/);assert.match(await page.locator('.payroll-report').innerText(),/Paid \$40/);assert.equal(await page.locator('#cash').innerText(),'$660');await page.screenshot({path:'test-results/payroll-report.png'});
+ await page.waitForFunction(()=>document.getElementById('week').textContent==='WEEK 02');
+ assert.equal(await page.locator('#reportDialog').isVisible(),true);assert.equal(await page.locator('#next').count(),0);
+ const timer=await page.locator('#timer').innerText();await page.waitForTimeout(1100);assert.notEqual(await page.locator('#timer').innerText(),timer);
+ await page.locator('#reportDialog [data-close]').click();await page.click('#end');await page.locator('#emptyOrdersDialog').waitFor();await page.click('#backFromEmptyWeek');assert.equal(await page.locator('#week').innerText(),'WEEK 02');await page.click('#reportsBtn');await page.locator('#reportDialog').waitFor();
+ await page.locator('#reportDialog [data-close]').click();
+ await page.click('#rosterBtn');assert.equal(await page.locator('.hood-card').count(),3);await page.locator('#rosterDialog [data-close]').click();
+ await page.click('#reportsBtn');await page.click('#replayBtn');await page.locator('#playback').waitFor();await page.click('#pause');
+ const frozen=await page.locator('#playTime').innerText();await page.waitForTimeout(200);assert.equal(await page.locator('#playTime').innerText(),frozen);
+ await page.click('#skip');await page.locator('#reportDialog [data-close]').click();assert.equal(await page.locator('#week').innerText(),'WEEK 02');
+ await page.setViewportSize({width:390,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth&&document.documentElement.scrollHeight<=innerHeight));
+ assert.ok(await page.evaluate(()=>document.getElementById('end').getBoundingClientRect().bottom<=document.querySelector('nav').getBoundingClientRect().top),'Mobile header must not overlap navigation');await page.screenshot({path:'test-results/mobile-city.png'});await page.click('#rosterBtn');await page.screenshot({path:'test-results/mobile-crew.png'});await page.locator('#rosterDialog [data-close]').click();await page.click('#buyBtn');assert.ok(await page.evaluate(()=>document.getElementById('buyDialog').scrollWidth<=document.getElementById('buyDialog').clientWidth));await page.screenshot({path:'test-results/mobile-shop.png'});
+ await page.locator('#buyDialog [data-close]').click();await page.click('#end');await page.locator('#emptyOrdersDialog').waitFor();await page.click('#confirmEmptyWeek');await page.locator('#playback').waitFor();
+ assert.deepEqual(errors,[]);console.log('Browser checks passed: crew-first map orders, portraits, no page scrolling, queue persistence, recruitment, reports, playback and mobile dialogs.');
+}finally{await browser?.close();await app.close();rmSync(dir,{recursive:true,force:true});}

@@ -1,0 +1,2066 @@
+{
+  "state": {
+    "id": "eefb2a37-549c-4597-9561-73c4d3fbf38f",
+    "seed": 579280694,
+    "week": 1,
+    "winner": null,
+    "buildings": [
+      {
+        "id": "b-00",
+        "name": "Vale Freight",
+        "type": "hq",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "ownerId": "gang-player",
+        "functionalInV1": true,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-01",
+        "name": "Mercer Grocer",
+        "type": "shop",
+        "position": {
+          "x": 1,
+          "y": 0
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-02",
+        "name": "Copper Kettle",
+        "type": "shop",
+        "position": {
+          "x": 2,
+          "y": 0
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-03",
+        "name": "Law Office",
+        "type": "law",
+        "position": {
+          "x": 3,
+          "y": 0
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-04",
+        "name": "East Foundry",
+        "type": "scenery",
+        "position": {
+          "x": 4,
+          "y": 0
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-05",
+        "name": "Ash Tailors",
+        "type": "shop",
+        "position": {
+          "x": 0,
+          "y": 1
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-06",
+        "name": "Oriole Jeweler",
+        "type": "jeweler",
+        "position": {
+          "x": 1,
+          "y": 1
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-07",
+        "name": "Police Headquarters",
+        "type": "police",
+        "position": {
+          "x": 2,
+          "y": 1
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-08",
+        "name": "Bell Books",
+        "type": "shop",
+        "position": {
+          "x": 3,
+          "y": 1
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-09",
+        "name": "Union Bank",
+        "type": "bank",
+        "position": {
+          "x": 4,
+          "y": 1
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-10",
+        "name": "Pike Bakery",
+        "type": "shop",
+        "position": {
+          "x": 0,
+          "y": 2
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-11",
+        "name": "Civic Gardens",
+        "type": "scenery",
+        "position": {
+          "x": 1,
+          "y": 2
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-12",
+        "name": "Crown Pharmacy",
+        "type": "shop",
+        "position": {
+          "x": 2,
+          "y": 2
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-13",
+        "name": "Morrow Market",
+        "type": "shop",
+        "position": {
+          "x": 3,
+          "y": 2
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-14",
+        "name": "Rail Depot",
+        "type": "scenery",
+        "position": {
+          "x": 4,
+          "y": 2
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-15",
+        "name": "Pool Hall",
+        "type": "shop",
+        "position": {
+          "x": 0,
+          "y": 3
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-16",
+        "name": "Wren Shoes",
+        "type": "shop",
+        "position": {
+          "x": 1,
+          "y": 3
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-17",
+        "name": "Hearth Hotel",
+        "type": "hotel",
+        "position": {
+          "x": 2,
+          "y": 3
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-18",
+        "name": "Pearl Florist",
+        "type": "shop",
+        "position": {
+          "x": 3,
+          "y": 3
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-19",
+        "name": "Dock Tavern",
+        "type": "speakeasy",
+        "position": {
+          "x": 4,
+          "y": 3
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-20",
+        "name": "Public Library",
+        "type": "scenery",
+        "position": {
+          "x": 0,
+          "y": 4
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-21",
+        "name": "Rose Laundry",
+        "type": "shop",
+        "position": {
+          "x": 1,
+          "y": 4
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-22",
+        "name": "Cinema",
+        "type": "theater",
+        "position": {
+          "x": 2,
+          "y": 4
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-23",
+        "name": "Slate Hardware",
+        "type": "shop",
+        "position": {
+          "x": 3,
+          "y": 4
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-24",
+        "name": "Blackthorn Cartage",
+        "type": "hq",
+        "position": {
+          "x": 4,
+          "y": 4
+        },
+        "ownerId": "gang-rival",
+        "functionalInV1": true,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-25",
+        "name": "Riverside Bank 6",
+        "type": "bank",
+        "position": {
+          "x": 5,
+          "y": 0
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-26",
+        "name": "Riverside Department Store 7",
+        "type": "department",
+        "position": {
+          "x": 6,
+          "y": 0
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-27",
+        "name": "Riverside Tailors 8",
+        "type": "shop",
+        "position": {
+          "x": 7,
+          "y": 0
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-28",
+        "name": "Riverside Apartments 9",
+        "type": "scenery",
+        "position": {
+          "x": 8,
+          "y": 0
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-29",
+        "name": "Riverside Park 10",
+        "type": "scenery",
+        "position": {
+          "x": 9,
+          "y": 0
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-30",
+        "name": "Hudson Apartments 6",
+        "type": "scenery",
+        "position": {
+          "x": 5,
+          "y": 1
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-31",
+        "name": "Hudson Park 7",
+        "type": "scenery",
+        "position": {
+          "x": 6,
+          "y": 1
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-32",
+        "name": "Hudson Diner 8",
+        "type": "shop",
+        "position": {
+          "x": 7,
+          "y": 1
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-33",
+        "name": "Hudson Barber 9",
+        "type": "shop",
+        "position": {
+          "x": 8,
+          "y": 1
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-34",
+        "name": "Hudson Bakery 10",
+        "type": "shop",
+        "position": {
+          "x": 9,
+          "y": 1
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-35",
+        "name": "Madison Barber 6",
+        "type": "shop",
+        "position": {
+          "x": 5,
+          "y": 2
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-36",
+        "name": "Madison Bakery 7",
+        "type": "shop",
+        "position": {
+          "x": 6,
+          "y": 2
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-37",
+        "name": "Madison Speakeasy 8",
+        "type": "speakeasy",
+        "position": {
+          "x": 7,
+          "y": 2
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-38",
+        "name": "Madison Hotel 9",
+        "type": "hotel",
+        "position": {
+          "x": 8,
+          "y": 2
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-39",
+        "name": "Madison Bank 10",
+        "type": "bank",
+        "position": {
+          "x": 9,
+          "y": 2
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-40",
+        "name": "Franklin Hotel 6",
+        "type": "hotel",
+        "position": {
+          "x": 5,
+          "y": 3
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-41",
+        "name": "Franklin Bank 7",
+        "type": "bank",
+        "position": {
+          "x": 6,
+          "y": 3
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-42",
+        "name": "Franklin Department Store 8",
+        "type": "department",
+        "position": {
+          "x": 7,
+          "y": 3
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-43",
+        "name": "Franklin Tailors 9",
+        "type": "shop",
+        "position": {
+          "x": 8,
+          "y": 3
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-44",
+        "name": "Franklin Apartments 10",
+        "type": "scenery",
+        "position": {
+          "x": 9,
+          "y": 3
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-45",
+        "name": "Canal Tailors 6",
+        "type": "shop",
+        "position": {
+          "x": 5,
+          "y": 4
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-46",
+        "name": "Canal Apartments 7",
+        "type": "scenery",
+        "position": {
+          "x": 6,
+          "y": 4
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-47",
+        "name": "Canal Park 8",
+        "type": "scenery",
+        "position": {
+          "x": 7,
+          "y": 4
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-48",
+        "name": "Canal Diner 9",
+        "type": "shop",
+        "position": {
+          "x": 8,
+          "y": 4
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-49",
+        "name": "Canal Barber 10",
+        "type": "shop",
+        "position": {
+          "x": 9,
+          "y": 4
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-50",
+        "name": "Lexington Bank 1",
+        "type": "bank",
+        "position": {
+          "x": 0,
+          "y": 5
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-51",
+        "name": "Lexington Department Store 2",
+        "type": "department",
+        "position": {
+          "x": 1,
+          "y": 5
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-52",
+        "name": "Lexington Tailors 3",
+        "type": "shop",
+        "position": {
+          "x": 2,
+          "y": 5
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-53",
+        "name": "Lexington Apartments 4",
+        "type": "scenery",
+        "position": {
+          "x": 3,
+          "y": 5
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-54",
+        "name": "Lexington Park 5",
+        "type": "scenery",
+        "position": {
+          "x": 4,
+          "y": 5
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-55",
+        "name": "Lexington Diner 6",
+        "type": "shop",
+        "position": {
+          "x": 5,
+          "y": 5
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-56",
+        "name": "Lexington Barber 7",
+        "type": "shop",
+        "position": {
+          "x": 6,
+          "y": 5
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-57",
+        "name": "Lexington Bakery 8",
+        "type": "shop",
+        "position": {
+          "x": 7,
+          "y": 5
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-58",
+        "name": "Lexington Speakeasy 9",
+        "type": "speakeasy",
+        "position": {
+          "x": 8,
+          "y": 5
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-59",
+        "name": "Lexington Hotel 10",
+        "type": "hotel",
+        "position": {
+          "x": 9,
+          "y": 5
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-60",
+        "name": "Monroe Apartments 1",
+        "type": "scenery",
+        "position": {
+          "x": 0,
+          "y": 6
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-61",
+        "name": "Monroe Park 2",
+        "type": "scenery",
+        "position": {
+          "x": 1,
+          "y": 6
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-62",
+        "name": "Monroe Diner 3",
+        "type": "shop",
+        "position": {
+          "x": 2,
+          "y": 6
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-63",
+        "name": "Monroe Barber 4",
+        "type": "shop",
+        "position": {
+          "x": 3,
+          "y": 6
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-64",
+        "name": "Monroe Bakery 5",
+        "type": "shop",
+        "position": {
+          "x": 4,
+          "y": 6
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-65",
+        "name": "Monroe Speakeasy 6",
+        "type": "speakeasy",
+        "position": {
+          "x": 5,
+          "y": 6
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-66",
+        "name": "Monroe Hotel 7",
+        "type": "hotel",
+        "position": {
+          "x": 6,
+          "y": 6
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-67",
+        "name": "Monroe Bank 8",
+        "type": "bank",
+        "position": {
+          "x": 7,
+          "y": 6
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-68",
+        "name": "Monroe Department Store 9",
+        "type": "department",
+        "position": {
+          "x": 8,
+          "y": 6
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-69",
+        "name": "Monroe Tailors 10",
+        "type": "shop",
+        "position": {
+          "x": 9,
+          "y": 6
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-70",
+        "name": "Atlantic Barber 1",
+        "type": "shop",
+        "position": {
+          "x": 0,
+          "y": 7
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-71",
+        "name": "Atlantic Bakery 2",
+        "type": "shop",
+        "position": {
+          "x": 1,
+          "y": 7
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-72",
+        "name": "Atlantic Speakeasy 3",
+        "type": "speakeasy",
+        "position": {
+          "x": 2,
+          "y": 7
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-73",
+        "name": "Atlantic Hotel 4",
+        "type": "hotel",
+        "position": {
+          "x": 3,
+          "y": 7
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-74",
+        "name": "Atlantic Bank 5",
+        "type": "bank",
+        "position": {
+          "x": 4,
+          "y": 7
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-75",
+        "name": "Atlantic Department Store 6",
+        "type": "department",
+        "position": {
+          "x": 5,
+          "y": 7
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-76",
+        "name": "Atlantic Tailors 7",
+        "type": "shop",
+        "position": {
+          "x": 6,
+          "y": 7
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-77",
+        "name": "Atlantic Apartments 8",
+        "type": "scenery",
+        "position": {
+          "x": 7,
+          "y": 7
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-78",
+        "name": "Atlantic Park 9",
+        "type": "scenery",
+        "position": {
+          "x": 8,
+          "y": 7
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-79",
+        "name": "Atlantic Diner 10",
+        "type": "shop",
+        "position": {
+          "x": 9,
+          "y": 7
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-80",
+        "name": "Essex Hotel 1",
+        "type": "hotel",
+        "position": {
+          "x": 0,
+          "y": 8
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-81",
+        "name": "Essex Bank 2",
+        "type": "bank",
+        "position": {
+          "x": 1,
+          "y": 8
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-82",
+        "name": "Essex Department Store 3",
+        "type": "department",
+        "position": {
+          "x": 2,
+          "y": 8
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-83",
+        "name": "Essex Tailors 4",
+        "type": "shop",
+        "position": {
+          "x": 3,
+          "y": 8
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-84",
+        "name": "Essex Apartments 5",
+        "type": "scenery",
+        "position": {
+          "x": 4,
+          "y": 8
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-85",
+        "name": "Essex Park 6",
+        "type": "scenery",
+        "position": {
+          "x": 5,
+          "y": 8
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-86",
+        "name": "Essex Diner 7",
+        "type": "shop",
+        "position": {
+          "x": 6,
+          "y": 8
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-87",
+        "name": "Essex Barber 8",
+        "type": "shop",
+        "position": {
+          "x": 7,
+          "y": 8
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-88",
+        "name": "Essex Bakery 9",
+        "type": "shop",
+        "position": {
+          "x": 8,
+          "y": 8
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-89",
+        "name": "Essex Speakeasy 10",
+        "type": "speakeasy",
+        "position": {
+          "x": 9,
+          "y": 8
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-90",
+        "name": "Chester Tailors 1",
+        "type": "shop",
+        "position": {
+          "x": 0,
+          "y": 9
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-91",
+        "name": "Chester Apartments 2",
+        "type": "scenery",
+        "position": {
+          "x": 1,
+          "y": 9
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-92",
+        "name": "Chester Park 3",
+        "type": "scenery",
+        "position": {
+          "x": 2,
+          "y": 9
+        },
+        "ownerId": null,
+        "functionalInV1": false,
+        "income": 0,
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-93",
+        "name": "Chester Diner 4",
+        "type": "shop",
+        "position": {
+          "x": 3,
+          "y": 9
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-94",
+        "name": "Chester Barber 5",
+        "type": "shop",
+        "position": {
+          "x": 4,
+          "y": 9
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-95",
+        "name": "Chester Bakery 6",
+        "type": "shop",
+        "position": {
+          "x": 5,
+          "y": 9
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 20,
+        "businessSize": "small",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-96",
+        "name": "Chester Speakeasy 7",
+        "type": "speakeasy",
+        "position": {
+          "x": 6,
+          "y": 9
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-97",
+        "name": "Chester Hotel 8",
+        "type": "hotel",
+        "position": {
+          "x": 7,
+          "y": 9
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 30,
+        "businessSize": "medium",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-98",
+        "name": "Chester Bank 9",
+        "type": "bank",
+        "position": {
+          "x": 8,
+          "y": 9
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      },
+      {
+        "id": "b-99",
+        "name": "Chester Department Store 10",
+        "type": "department",
+        "position": {
+          "x": 9,
+          "y": 9
+        },
+        "ownerId": null,
+        "functionalInV1": true,
+        "income": 40,
+        "businessSize": "large",
+        "heldIncome": 0,
+        "propertyOwnerId": null
+      }
+    ],
+    "hoods": [
+      {
+        "id": "h-0",
+        "gangId": "gang-player",
+        "name": "Vincent Moretti",
+        "boss": true,
+        "shootOnSight": false,
+        "indoors": true,
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "inventory": {
+          "gun": null,
+          "bombs": 0
+        },
+        "stats": {
+          "intelligence": 3,
+          "intimidate": 1,
+          "firearms": 1,
+          "explosives": 2
+        },
+        "status": "alive"
+      },
+      {
+        "id": "h-1",
+        "gangId": "gang-player",
+        "name": "Eugene Palermo",
+        "boss": false,
+        "shootOnSight": false,
+        "indoors": true,
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "inventory": {
+          "gun": null,
+          "bombs": 0
+        },
+        "stats": {
+          "intelligence": 4,
+          "intimidate": 2,
+          "firearms": 2,
+          "explosives": 2
+        },
+        "status": "alive"
+      },
+      {
+        "id": "h-2",
+        "gangId": "gang-player",
+        "name": "Francis Falco",
+        "boss": false,
+        "shootOnSight": false,
+        "indoors": true,
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "inventory": {
+          "gun": null,
+          "bombs": 0
+        },
+        "stats": {
+          "intelligence": 2,
+          "intimidate": 3,
+          "firearms": 4,
+          "explosives": 3
+        },
+        "status": "alive"
+      },
+      {
+        "id": "h-3",
+        "gangId": "gang-rival",
+        "name": "John Rosenthal",
+        "boss": true,
+        "shootOnSight": false,
+        "indoors": true,
+        "position": {
+          "x": 4,
+          "y": 4
+        },
+        "inventory": {
+          "gun": "pistol",
+          "bombs": 0
+        },
+        "stats": {
+          "intelligence": 4,
+          "intimidate": 1,
+          "firearms": 3,
+          "explosives": 2
+        },
+        "status": "alive"
+      },
+      {
+        "id": "h-4",
+        "gangId": "gang-rival",
+        "name": "Samuel DeMarco",
+        "boss": false,
+        "shootOnSight": false,
+        "indoors": true,
+        "position": {
+          "x": 4,
+          "y": 4
+        },
+        "inventory": {
+          "gun": "pistol",
+          "bombs": 0
+        },
+        "stats": {
+          "intelligence": 2,
+          "intimidate": 4,
+          "firearms": 4,
+          "explosives": 3
+        },
+        "status": "alive"
+      },
+      {
+        "id": "h-5",
+        "gangId": "gang-rival",
+        "name": "Mildred Lombardo",
+        "boss": false,
+        "shootOnSight": false,
+        "indoors": true,
+        "position": {
+          "x": 4,
+          "y": 4
+        },
+        "inventory": {
+          "gun": "pistol",
+          "bombs": 0
+        },
+        "stats": {
+          "intelligence": 2,
+          "intimidate": 4,
+          "firearms": 2,
+          "explosives": 4
+        },
+        "status": "alive"
+      }
+    ],
+    "profile": {
+      "bossName": "Vincent Moretti",
+      "outfitName": "Vale Syndicate",
+      "color": "#82b9a0"
+    },
+    "schemaVersion": 6,
+    "stockpile": {
+      "gang-player": {
+        "pistol": 0,
+        "tommy": 0,
+        "bomb": 0
+      },
+      "gang-rival": {
+        "pistol": 0,
+        "tommy": 0,
+        "bomb": 0
+      }
+    },
+    "cash": {
+      "gang-player": 1000,
+      "gang-rival": 100
+    },
+    "wageDebt": {
+      "gang-player": 0,
+      "gang-rival": 0
+    },
+    "intel": {
+      "buildings": {},
+      "sightings": {},
+      "investigations": {}
+    },
+    "rivalIntel": {
+      "buildings": {},
+      "investigations": {}
+    },
+    "nextHood": 6,
+    "recruitmentPools": {
+      "b-00": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-01": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-02": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-03": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-04": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-05": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-06": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-07": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-08": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-09": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-10": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-11": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-12": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-13": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-14": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-15": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-16": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-17": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-18": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-19": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-20": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-21": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-22": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-23": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-24": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-25": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-26": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-27": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-28": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-29": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-30": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-31": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-32": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-33": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-34": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-35": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-36": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-37": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-38": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-39": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-40": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-41": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-42": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-43": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-44": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-45": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-46": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-47": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-48": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-49": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-50": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-51": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-52": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-53": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-54": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-55": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-56": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-57": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-58": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-59": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-60": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-61": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-62": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-63": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-64": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-65": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-66": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-67": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-68": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-69": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-70": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-71": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-72": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-73": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-74": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-75": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-76": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-77": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-78": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-79": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-80": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-81": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-82": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-83": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-84": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-85": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-86": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-87": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-88": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-89": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-90": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-91": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-92": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-93": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-94": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-95": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-96": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-97": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-98": {
+        "available": 2,
+        "refreshedWeek": 1
+      },
+      "b-99": {
+        "available": 2,
+        "refreshedWeek": 1
+      }
+    }
+  },
+  "queue": [],
+  "phase": "setup",
+  "deadline": null
+}

@@ -1,0 +1,53 @@
+import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+import {mkdtempSync,rmSync,mkdirSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {createApp} from '../server/index.js';
+const dir=mkdtempSync(join(tmpdir(),'cinderwick-animation-')),app=createApp({dataDir:dir,planningMs:600000});
+let browser;
+try{
+ await new Promise(resolve=>app.server.listen(0,'127.0.0.1',resolve));
+ browser=await chromium.launch({channel:'msedge',headless:true});
+ const page=await browser.newPage({viewport:{width:1280,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:'+app.server.address().port);
+ await page.locator('#setupDialog').waitFor();await page.fill('#bossName','Mara Ash');await page.fill('#outfitName','Ash Crew');await page.fill('#outfitColor','#b568cf');await page.click('#setupForm button');await page.waitForFunction(()=>!document.getElementById('setupDialog').open);await page.waitForFunction(()=>document.getElementById('crewCount').textContent==='3');
+ const result=await page.evaluate(async()=>{
+ const {createScene}=await import('/scene.js');const host=document.createElement('div');host.style.cssText='position:fixed;inset:0;z-index:100';document.body.append(host);
+ const s=createScene(host,()=>{},id=>window.clickedHood=id);window.animationFixture=s;
+ const h={id:'h-0',name:'Ada Voss',gangId:'gang-player',boss:true,status:'alive',indoors:true,inventory:{gun:'pistol',bombs:0},position:{x:0,y:0}};
+ const state={buildings:[{id:'b-00',name:'Vale Freight',type:'hq',functionalInV1:true,ownerId:'gang-player',position:{x:0,y:0}}],hoods:[h]};
+ const frames=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+ s.playback(true);s.planning(true);s.apply(state);await frames();const planning=s.inspect();
+ s.planning(false);
+ s.move({actorId:'h-0',actorGangId:'gang-player',fromPosition:{x:0,y:0},toPosition:{x:1,y:0}},0,6000);s.time(3000);await frames();const halfway=s.inspect();await frames();const paused=s.inspect();
+ s.time(6000);await frames();const end=s.inspect();
+ s.event({type:'action_result',orderType:'bomb',actorId:'h-0',toPosition:{x:0,y:0},tick:0,seq:1,data:{detonated:true}},6000);s.time(6400);await frames();const blast=s.inspect();
+ return {planning,halfway,paused,end,blast};
+ });
+ assert.equal(result.planning.hoods.length,0);
+ const cut=await page.evaluate(()=>{const s=window.animationFixture;s.cutaway(true);return s.inspect();});assert.equal(cut.cutaway,true);assert.equal(cut.tramPositions.length,2);const assigned=await page.evaluate(()=>{window.animationFixture.assignmentTargets(['b-00']);return window.animationFixture.inspect().assignedBuildings;});assert.deepEqual(assigned,['b-00']);await page.evaluate(()=>window.animationFixture.assignmentTargets([]));await page.evaluate(()=>window.animationFixture.cutaway(false));assert.equal(result.planning.pedestrians,50);
+ assert.ok(result.halfway.hoods[0].triangles>1000);
+ assert.ok(Math.abs(result.halfway.hoods[0].position[0]-(-10.95))<.001);assert.ok(Math.abs(result.end.hoods[0].position[0]-(-7.95))<.001);
+ assert.equal(result.halfway.hoods[0].gun,'pistol');const traveled=(a,b)=>Math.hypot(...a.map((v,i)=>v-b[i]));assert.ok(Math.abs(traveled(result.planning.civilianPositions[0],result.halfway.civilianPositions[0])-3)<.001);assert.ok(Math.abs(traveled(result.planning.trafficPositions[0],result.halfway.trafficPositions[0])-3)<.001);assert.notEqual(result.halfway.hoods[0].leg,0);assert.deepEqual(result.halfway.hoods[0],result.paused.hoods[0]);
+ assert.notDeepEqual(result.planning.trafficPositions,result.halfway.trafficPositions);assert.deepEqual(result.halfway.trafficPositions,result.paused.trafficPositions);
+ assert.notDeepEqual(result.planning.civilianPositions,result.halfway.civilianPositions);assert.equal(result.blast.effects,1);assert.ok(result.blast.panicking>0);
+ const before=await page.evaluate(()=>window.animationFixture.inspect().cameraTarget);
+ await page.keyboard.down('w');await page.waitForTimeout(180);await page.keyboard.up('w');
+ const after=await page.evaluate(()=>window.animationFixture.inspect().cameraTarget);assert.notDeepEqual(before,after);
+ await page.keyboard.down('ArrowRight');await page.waitForTimeout(180);await page.keyboard.up('ArrowRight');
+ assert.notDeepEqual(after,await page.evaluate(()=>window.animationFixture.inspect().cameraTarget));
+ const final=await page.evaluate(async()=>{const s=window.animationFixture;s.time(10500);s.planning(true);await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));return s.inspect();});
+ assert.equal(final.effects,0);assert.equal(final.hoods.length,0);
+ const pulse=await page.evaluate(async()=>{const s=window.animationFixture;s.confirmOrder('b-00');const active=s.inspect().effects;s.time(12000);await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));return {active,after:s.inspect().effects};});assert.equal(pulse.active,1);assert.equal(pulse.after,0);
+ const panic=await page.evaluate(async()=>{const s=window.animationFixture;const frames=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));s.time(15999);await frames();const during=s.inspect().panicking;s.time(16000);await frames();return {during,after:s.inspect().panicking};});assert.ok(panic.during>0);assert.equal(panic.after,0);
+ const group=await page.evaluate(async()=>{
+ const scene=window.animationFixture;scene.planning(false);
+ scene.apply({week:1,buildings:[],hoods:Array.from({length:18},(_,i)=>({id:'h-'+i,name:'Crew '+i,gangId:'gang-player',status:'alive',indoors:false,inventory:{gun:i%2?'tommy':'pistol',bombs:0},position:{x:2,y:2}}))});
+ await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));return scene.inspect().hoods;
+ });
+ for(let i=0;i<group.length;i++)for(let j=i+1;j<group.length;j++)assert.ok(Math.hypot(group[i].position[0]-group[j].position[0],group[i].position[2]-group[j].position[2])>=.73,'Hoods must occupy separate waiting positions');
+ mkdirSync('test-results',{recursive:true});await page.evaluate(()=>{const s=window.animationFixture;s.apply({week:1,buildings:[],hoods:[{id:'h-0',name:'Frank Doyle',gangId:'gang-player',status:'alive',indoors:false,inventory:{gun:'pistol',bombs:0},position:{x:2,y:2}}]});s.focus('h-0');});await page.waitForFunction(()=>{const s=window.animationFixture.inspect(),p=s.hoods[0].position;return Math.abs(s.cameraTarget[0]-p[0])+Math.abs(s.cameraTarget[2]-p[2])<.001;});const point=await page.evaluate(()=>window.animationFixture.screenPosition('h-0'));await page.mouse.click(point.x,point.y);assert.equal(await page.evaluate(()=>window.clickedHood),'h-0');await page.screenshot({path:'test-results/armed-crew.png'});const shot=await page.evaluate(async()=>{const s=window.animationFixture;s.event({type:'action_attempt',actorId:'h-0',data:{kind:'gunfire',shooterId:'h-0',fromWorld:[-1.95,.15,2.5],toWorld:[1.5,.15,2.5]}},16000);s.time(16050);await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));return s.inspect();});assert.equal(shot.effects,1);assert.equal(shot.hoods[0].aiming,true);assert.ok(Math.abs(shot.hoods[0].yaw-Math.PI/2)<.001);await page.screenshot({path:'test-results/gunfire-closeup.png'});const corpse=await page.evaluate(async()=>{const s=window.animationFixture;s.apply({week:1,buildings:[],hoods:[{id:'h-0',name:'Frank Doyle',gangId:'gang-player',status:'dead',indoors:false,inventory:{gun:'tommy',bombs:0},position:null,deathPosition:[-1.95,.15,2.5],deathWeek:1}]});s.time(17000);await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));return s.inspect();});assert.equal(corpse.hoods[0].dead,true);assert.equal(corpse.hoods[0].eyesClosed,true);await page.evaluate(()=>window.clickedHood=null);const corpsePoint=await page.evaluate(()=>window.animationFixture.screenPosition('h-0'));await page.mouse.click(corpsePoint.x,corpsePoint.y);assert.equal(await page.evaluate(()=>window.clickedHood),'h-0');await page.screenshot({path:'test-results/fallen-hood.png'});
+ const tommy=await page.evaluate(async()=>{const s=window.animationFixture;s.event({type:'action_attempt',actorId:'h-0',data:{kind:'gunfire',gun:'tommy',shooterId:'h-0',fromWorld:[-1.95,.15,2.5],toWorld:[1.5,.15,2.5]}},18000);s.time(18050);await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));return s.inspect();});assert.equal(tommy.effects,1);
+ assert.deepEqual(errors,[]);console.log('Animation checks passed: hidden planning hoods, animated HQ departure, interpolation, traffic, pause, bomb cleanup, WASD and arrow-key free camera.');
+}finally{await browser?.close();await app.close();rmSync(dir,{recursive:true,force:true});}

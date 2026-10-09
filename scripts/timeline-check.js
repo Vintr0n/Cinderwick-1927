@@ -1,0 +1,34 @@
+import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+import {mkdtempSync,rmSync,mkdirSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {createApp} from '../server/index.js';
+import {createStore} from '../server/data/store.js';
+import {createGame} from '../server/sim/model.js';
+import {simulate,playerReplay} from '../server/sim/engine.js';
+import {weeklySummary} from '../public/reporting.js';
+const dir=mkdtempSync(join(tmpdir(),'cinderwick-timeline-')),state=createGame(19);
+state.buildings[1].ownerId='gang-rival';state.buildings[2].ownerId='gang-player';state.hoods[1].inventory.gun='pistol';state.hoods[2].inventory.bombs=1;
+const queue=[{actorId:'h-0',type:'collect',targetId:'b-02'},{actorId:'h-1',type:'patrol',targetId:'b-03'},{actorId:'h-2',type:'bomb',targetId:'b-06'}];
+const replay=simulate(state,queue),expected=weeklySummary(playerReplay(replay)),firstShot=replay.events.find(e=>e.data.kind==='gunfire');assert.ok(firstShot);
+createStore(dir).saveGame({state,queue,phase:'planning',deadline:Date.now()+600000});
+const app=createApp({dataDir:dir,planningMs:600000});let browser;
+try{
+ await new Promise(resolve=>app.server.listen(0,'127.0.0.1',resolve));browser=await chromium.launch({channel:'msedge',headless:true});
+ const page=await browser.newPage({viewport:{width:1440,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:'+app.server.address().port);await page.waitForFunction(()=>document.getElementById('orderCount').textContent==='3');
+ const point=await page.evaluate(async()=>{const THREE=await import('three'),r=document.getElementById('scene').getBoundingClientRect(),h=Math.max(40,42*r.height/r.width),c=new THREE.OrthographicCamera(-h*r.width/r.height,h*r.width/r.height,h,-h,.1,200);c.position.set(62,60,68);c.lookAt(15,0,15);c.updateMatrixWorld();const p=new THREE.Vector3(0,3.45,-12).project(c);return {x:r.left+(p.x+1)*r.width/2,y:r.top+(1-p.y)*r.height/2};});
+ await page.mouse.click(point.x,point.y);assert.match(await page.locator('#mapSelection').innerText(),/Expected protection income: \$30/);assert.match(await page.locator('#mapSelection').innerText(),/Holding for you: \$30/);
+ mkdirSync('test-results',{recursive:true});await page.screenshot({path:'test-results/business-balance.png'});
+ await page.click('#end');await page.waitForFunction(()=>parseFloat(document.getElementById('playTime').textContent)>1);
+ const before=parseFloat(await page.locator('#playTime').innerText());
+ await page.evaluate(()=>{const until=performance.now()+1500;while(performance.now()<until){/* simulate a suspended render loop */}});
+ await page.waitForTimeout(100);const after=parseFloat(await page.locator('#playTime').innerText());assert.ok(after-before>=1.4,'Replay must catch up elapsed wall-clock time, not cap it to 250ms');
+ await page.selectOption('#speed','4');await page.waitForFunction(t=>parseFloat(document.getElementById('playTime').textContent)>=t,Math.max(3,firstShot.tick*.5-2));await page.selectOption('#speed','1');
+ await page.waitForFunction(()=>document.getElementById('eventCaption').textContent.includes('shot 1/10'));await page.click('#pause');await page.screenshot({path:'test-results/combat-replay.png'});
+ await page.click('#eventCaption');await page.locator('#liveLogDialog').waitFor();assert.match(await page.locator('#liveLogBody').innerText(),/shot 1\/10/);assert.match(await page.locator('#liveLogBody').innerText(),/Collected \$30/);assert.ok(await page.locator('#liveLogBody .outfit-chip').count()>0);assert.ok(await page.locator('#liveLogBody .outfit-chip').evaluateAll(nodes=>nodes.every(n=>n.title&&n.style.background)));await page.screenshot({path:'test-results/live-log.png'});
+ await page.locator('#liveLogDialog [data-close]').click();await page.click('#skip');await page.locator('#reportDialog').waitFor();
+ const summary=page.locator('#reportSummary .summary-grid>div');assert.match(await summary.nth(0).innerText(),new RegExp('\\$'+expected.income+'\\s+WEEKLY INCOME'));assert.match(await summary.nth(1).innerText(),new RegExp('\\$'+expected.wages+'\\s+WEEKLY WAGES'));assert.match(await summary.nth(3).innerText(),new RegExp('^'+expected.lost));
+ await page.screenshot({path:'test-results/weekly-finances.png'});assert.deepEqual(errors,[]);console.log('Timeline UI checks passed: held business money, income/wages, live combat log, and delayed-frame catch-up.');
+}finally{await browser?.close();await app.close();rmSync(dir,{recursive:true,force:true});}

@@ -1,0 +1,41 @@
+import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+import {mkdtempSync,rmSync,mkdirSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {createApp} from '../server/index.js';
+import {createStore} from '../server/data/store.js';
+import {createGame} from '../server/sim/model.js';
+const dir=mkdtempSync(join(tmpdir(),'cinderwick-inspection-')),state=createGame();
+state.hoods[0].inventory.gun='pistol';
+createStore(dir).saveGame({state,queue:[{actorId:'h-0',type:'extort',targetId:'b-01'}],phase:'planning',deadline:Date.now()+600000});
+const app=createApp({dataDir:dir,planningMs:600000});let browser;
+try{
+ await new Promise(resolve=>app.server.listen(0,'127.0.0.1',resolve));
+ browser=await chromium.launch({channel:'msedge',headless:true});
+ const page=await browser.newPage({viewport:{width:1440,height:900}}),errors=[];
+ page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:'+app.server.address().port);
+ await page.waitForFunction(()=>document.getElementById('orderCount').textContent==='1');await page.click('#end');
+ await page.waitForFunction(()=>parseFloat(document.getElementById('playTime').textContent)>=2);await page.click('#pause');
+ const point=await page.evaluate(async()=>{
+ const THREE=await import('three'),{streetPosition}=await import('/movement.js');
+ const r=document.getElementById('scene').getBoundingClientRect(),h=Math.max(40,42*r.height/r.width);
+ const camera=new THREE.OrthographicCamera(-h*r.width/r.height,h*r.width/r.height,h,-h,.1,200);
+ camera.position.set(62,60,68);camera.lookAt(15,0,15);camera.updateMatrixWorld();
+ const t=parseFloat(document.getElementById('playTime').textContent)/6;
+ const p=new THREE.Vector3(...streetPosition({x:0,y:0},'h-0')).lerp(new THREE.Vector3(...streetPosition({x:1,y:0},'h-0')),t);p.y+=2.35;p.project(camera);
+ return {x:r.left+(p.x+1)*r.width/2,y:r.top+(1-p.y)*r.height/2};
+ });
+ await page.mouse.click(point.x,point.y);
+ await page.locator('#hoodInspection').waitFor();
+ assert.equal(await page.locator('#inspectedName').innerText(),state.hoods[0].name);
+ assert.equal(await page.locator('#inspectedAction').innerText(),'Extort '+state.buildings.find(b=>b.id==='b-01').name);
+ assert.ok((await page.locator('#playback').boundingBox()).width<=340);
+ mkdirSync('test-results',{recursive:true});await page.screenshot({path:'test-results/replay-inspection.png'});
+ await page.selectOption('#speed','4');await page.click('#pause');
+ await page.waitForFunction(()=>document.getElementById('inspectedAction').textContent==='Heading back to HQ');
+ await page.click('#pause');await page.screenshot({path:'test-results/replay-return.png'});
+ await page.click('#skip');assert.equal(await page.locator('#hoodInspection').isVisible(),false);
+ assert.deepEqual(errors,[]);console.log('Replay inspection passed: click visible hood, see assignment, live return-to-HQ update, compact playback, and cleanup.');
+}finally{await browser?.close();await app.close();rmSync(dir,{recursive:true,force:true});}

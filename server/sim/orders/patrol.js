@@ -1,0 +1,1 @@
+export default {name:'Patrol',requiredStats:['firearms'],target:'building',resolve(c){c.guards.set(c.actor.id,c.order);c.emit('action_result','success',{message:'Guarding this block until the return to HQ.'});}};

@@ -1,0 +1,9 @@
+// Original vector illustrations, matching the brass-and-ink dossier artwork.
+export function equipmentArt(id){
+ const art={
+ pistol:'<path d="M38 55h155v23H98l-10 49H58l11-49H38z" fill="#596763" stroke="#b6b3a2" stroke-width="3"/><path d="M69 81h25l-10 43H59z" fill="#70503b"/><path d="M103 78v20h23l8-20M44 49h9v7m123-7h9v7" fill="none" stroke="#a9aa98" stroke-width="4"/><path d="M46 65h140M57 57v14m8-14v14m8-14v14" stroke="#263c3b" stroke-width="3"/>',
+ tommy:'<path d="M15 85l43-17 15 6v18l-58 17z" fill="#78523b" stroke="#b39a72" stroke-width="3"/><path d="M66 64h101v20H66zM168 68h57v10h-57z" fill="#5a6764" stroke="#b6b3a2" stroke-width="3"/><path d="M81 84l-5 27h15l8-27m54-4l-7 29h14l9-29" fill="#78523b" stroke="#b39a72" stroke-width="2"/><circle cx="122" cy="97" r="23" fill="#344b49" stroke="#a3a695" stroke-width="3"/><circle cx="122" cy="97" r="13" fill="none" stroke="#71827a"/><path d="M178 64v17m7-17v17m7-17v17m7-17v17m7-17v17m7-17v17" stroke="#283c3a" stroke-width="3"/>',
+ bomb:'<path d="M138 54q-8-27 14-27t20-12" fill="none" stroke="#bc9e6b" stroke-width="4"/><g stroke="#d0a680" stroke-width="2"><rect x="52" y="58" width="136" height="23" rx="10" fill="#974c3c"/><rect x="45" y="80" width="145" height="24" rx="10" fill="#b56449"/><rect x="52" y="103" width="136" height="23" rx="10" fill="#884435"/></g><path d="M77 57h15v70H77zM150 57h15v70h-15z" fill="#514937" stroke="#a9956d" stroke-width="2"/><rect x="96" y="77" width="50" height="30" fill="#d8bf86"/><text x="121" y="98" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="20" fill="#302922">TNT</text>'
+ };
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160"><rect width="240" height="160" fill="#112329"/><rect x="8" y="8" width="224" height="144" fill="none" stroke="#a88e5c" opacity=".4"/>'+art[id]+'</svg>');
+}
