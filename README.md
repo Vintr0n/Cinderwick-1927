@@ -22,6 +22,10 @@ Restart the server after updates to simulation or server code, then refresh the 
 
 New campaigns begin with a setup screen for your boss name, outfit name, and color. For testing, new campaigns start with $1000, a boss, and two unarmed hoods. Use **New campaign** to create a new outfit; this resets the active campaign.
 
+########################################################################
+# Game Guide
+########################################################################
+
 ## Crew-first planning
 
 1. Open **Crew** and click a living hood's portrait/name card.
