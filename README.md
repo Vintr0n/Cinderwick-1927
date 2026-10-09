@@ -2,7 +2,10 @@
 
 Strategy and simulation 3D browser-based game set in a fictional 1920s Prohibition-era Chicago suburb. Manage territory, build criminal syndicates, execute hits, and expand your empire while taking on rival gangs.
 
-https://github.com/Vintr0n/Cinderwick-1927/blob/main/media/Cinderwick-Trailer-1080p-compressed.mp4
+
+https://github.com/user-attachments/assets/a41d23d7-da62-416c-a268-8c1f46125c0a
+
+
 
 ## Run
 
