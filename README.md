@@ -1,6 +1,8 @@
 # Cinderwick - The Vale Syndicate
 
-A local, single-player strategy prototype in an original Prohibition-era city.
+Strategy and simulation 3D browser-based game set in a fictional 1920s Prohibition-era Chicago suburb. Manage territory, build criminal syndicates, execute hits, and expand your empire while taking on rival gangs.
+
+
 
 ## Run
 
